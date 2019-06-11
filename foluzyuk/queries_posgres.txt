@@ -1,0 +1,23 @@
+SELECT "idCompany", ARRAY_AGG("Workers"."Name") FROM "Company" -- Компанії та працівники, які працюють у них
+INNER JOIN "Workers" ON "idCompany" = "Company_idCompany"
+GROUP BY "idCompany";
+
+SELECT "Company_idCompany", COUNT("idTelecast"), ARRAY_AGG("Telecast"."Name") FROM "Telecast" -- Компанія, кількість випущених передач та самі передачі
+INNER JOIN "Company_has_Telecast" ON "idTelecast" = "Telecast_idTelecast"
+GROUP BY "Company_idCompany"
+ORDER BY "Company_idCompany";
+
+SELECT "Genre"."Name" FROM "Telecast_has_Genre" -- 3 найпопулярніші жанри
+INNER JOIN "Genre" ON "idGenre" = "Genre_idGenre"
+GROUP BY "idGenre"
+ORDER BY COUNT("Telecast_idTelecast") DESC LIMIT 3;
+
+(SELECT "Genre"."Name", COUNT("Telecast_idTelecast") FROM "Genre" -- жанр, кількість телепередач, які належать до нього та загальна кількість телепередач та відповідних їм жанрів
+INNER JOIN "Telecast_has_Genre" ON "idGenre" = "Genre_idGenre"
+GROUP BY "idGenre")
+UNION ALL
+(SELECT 'Всього телепередач:',COUNT("Genre_idGenre") FROM "Telecast_has_Genre");
+
+SELECT EXTRACT(YEAR FROM "Birthday") AS "Year", ARRAY_AGG("Name") FROM "Workers" -- роки та працівники, які народилися у цьому році
+GROUP BY "Year"
+ORDER BY "Year";

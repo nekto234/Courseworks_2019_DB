@@ -1,0 +1,49 @@
+
+INSERT INTO "Telecast" ("idTelecast", "Name", "Time", "Type", "Duration") VALUES (1, 'Машка', '2013-4-13 16:8:44', 'Мультфільм', '01:16:20');
+INSERT INTO "Telecast" ("idTelecast", "Name", "Time", "Type", "Duration") VALUES (2, 'Фіксики', '2018-2-24 4:11:51', 'Мультфільм', '00:16:14');
+INSERT INTO "Telecast" ("idTelecast", "Name", "Time", "Type", "Duration") VALUES (3, 'Маврики', '2016-7-22 10:54:15', 'Фільм', '01:31:26');
+INSERT INTO "Telecast" ("idTelecast", "Name", "Time", "Type", "Duration") VALUES (4, 'Агент', '2015-12-8 21:58:38', 'Фільм', '02:08:48');
+INSERT INTO "Telecast" ("idTelecast", "Name", "Time", "Type", "Duration") VALUES (5, 'Пруф', '2014-9-25 22:47:14', 'Серіал', '00:50:13');
+
+
+
+INSERT INTO "Genre" ("idGenre", "Name", "Description") VALUES (1, 'Наука', 'Наукові факти');
+INSERT INTO "Genre" ("idGenre", "Name", "Description") VALUES (2, 'Історія', 'Історичні факти');
+INSERT INTO "Genre" ("idGenre", "Name", "Description") VALUES (3, 'Псевдонаука', 'Псевдонаукові факти');
+INSERT INTO "Genre" ("idGenre", "Name", "Description") VALUES (4, 'Фантастика', 'Фантастичні факти');
+INSERT INTO "Genre" ("idGenre", "Name", "Description") VALUES (5, 'Документальність', 'Документальні факти');
+
+
+INSERT INTO "Company" ("idCompany", "Name", "Email", "Creating_date") VALUES (1, 'Грув', 'groove@gmail.com', '1932-9-23');
+INSERT INTO "Company" ("idCompany", "Name", "Email", "Creating_date") VALUES (2, 'Максім', 'maxim@gmail.com', '1943-8-21');
+INSERT INTO "Company" ("idCompany", "Name", "Email", "Creating_date") VALUES (3, 'КіноДанс', 'kinodance@mail.ru', '1959-2-14');
+INSERT INTO "Company" ("idCompany", "Name", "Email", "Creating_date") VALUES (4, 'Флірт', 'flirt@ukr.net', '1931-3-1');
+INSERT INTO "Company" ("idCompany", "Name", "Email", "Creating_date") VALUES (5, 'Щупака', 'shchupaka@ukr.net', '1939-4-3');
+
+
+
+INSERT INTO "Workers" ("idWorkers", "Name", "Birthday", "Phone", "Company_idCompany") VALUES (1, 'Дмитренко Віталія Денисівна', '1961-8-5', '38058038700', 3);
+INSERT INTO "Workers" ("idWorkers", "Name", "Birthday", "Phone", "Company_idCompany") VALUES (2, 'Панасюк Олена Ігорівна', '1959-10-22', '38099697228', 2);
+INSERT INTO "Workers" ("idWorkers", "Name", "Birthday", "Phone", "Company_idCompany") VALUES (3, 'Малюванчук Наталя Любомирівна', '1962-5-8', '38010279533', 3);
+INSERT INTO "Workers" ("idWorkers", "Name", "Birthday", "Phone", "Company_idCompany") VALUES (4, 'Петренко Ігор Ігорович', '1963-7-10', '38026193244', 4);
+INSERT INTO "Workers" ("idWorkers", "Name", "Birthday", "Phone", "Company_idCompany") VALUES (5, 'Малюванчук Анастасія Марянівна', '1954-6-2', '38059365121', 1);
+INSERT INTO "Workers" ("idWorkers", "Name", "Birthday", "Phone", "Company_idCompany") VALUES (6, 'Броварчук Дмитро Максимович', '1954-8-27', '38094788368', 5);
+
+
+INSERT INTO "Telecast_has_Genre" ("Telecast_idTelecast", "Genre_idGenre") VALUES (1, 4);
+INSERT INTO "Telecast_has_Genre" ("Telecast_idTelecast", "Genre_idGenre") VALUES (6, 3);
+INSERT INTO "Telecast_has_Genre" ("Telecast_idTelecast", "Genre_idGenre") VALUES (4, 2);
+INSERT INTO "Telecast_has_Genre" ("Telecast_idTelecast", "Genre_idGenre") VALUES (2, 3);
+INSERT INTO "Telecast_has_Genre" ("Telecast_idTelecast", "Genre_idGenre") VALUES (4, 5);
+INSERT INTO "Telecast_has_Genre" ("Telecast_idTelecast", "Genre_idGenre") VALUES (2, 5);
+INSERT INTO "Telecast_has_Genre" ("Telecast_idTelecast", "Genre_idGenre") VALUES (6, 1);
+INSERT INTO "Telecast_has_Genre" ("Telecast_idTelecast", "Genre_idGenre") VALUES (3, 2);
+
+
+INSERT INTO "Company_has_Telecast" ("Company_idCompany", "Telecast_idTelecast") VALUES (1, 3);
+INSERT INTO "Company_has_Telecast" ("Company_idCompany", "Telecast_idTelecast") VALUES (3, 5);
+INSERT INTO "Company_has_Telecast" ("Company_idCompany", "Telecast_idTelecast") VALUES (2, 5);
+INSERT INTO "Company_has_Telecast" ("Company_idCompany", "Telecast_idTelecast") VALUES (3, 6);
+INSERT INTO "Company_has_Telecast" ("Company_idCompany", "Telecast_idTelecast") VALUES (5, 5);
+INSERT INTO "Company_has_Telecast" ("Company_idCompany", "Telecast_idTelecast") VALUES (2, 3);
+INSERT INTO "Company_has_Telecast" ("Company_idCompany", "Telecast_idTelecast") VALUES (5, 6);

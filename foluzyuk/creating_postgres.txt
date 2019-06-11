@@ -1,0 +1,66 @@
+
+CREATE TABLE "Telecast" (
+  "idTelecast" INT NOT NULL,
+  "Name" VARCHAR(45) NULL,
+  "Time" TIMESTAMP NULL,
+  "Type" VARCHAR(45) NULL,
+  "Duration" TIME NULL,
+  PRIMARY KEY ("idTelecast"));
+
+
+CREATE TABLE "Genre" (
+  "idGenre" INT NOT NULL,
+  "Name" VARCHAR(45) NOT NULL,
+  "Description" VARCHAR(45) NULL,
+  PRIMARY KEY ("idGenre"));
+
+
+CREATE TABLE "Company" (
+  "idCompany" INT NOT NULL,
+  "Name" VARCHAR(45) NOT NULL,
+  "Email" VARCHAR(45) NOT NULL,
+  "Creating_date" DATE NULL,
+  PRIMARY KEY ("idCompany"));
+
+
+
+CREATE TABLE "Workers" (
+  "idWorkers" INT NOT NULL,
+  "Name" VARCHAR(45) NOT NULL,
+  "Birthday" DATE NOT NULL,
+  "Phone" VARCHAR(45) NOT NULL,
+  "Company_idCompany" INT NOT NULL,
+  PRIMARY KEY ("idWorkers", "Company_idCompany"),
+    FOREIGN KEY ("Company_idCompany")
+    REFERENCES "Company" ("idCompany")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+CREATE TABLE "Telecast_has_Genre" (
+  "Telecast_idTelecast" INT NOT NULL,
+  "Genre_idGenre" INT NOT NULL,
+  PRIMARY KEY ("Telecast_idTelecast", "Genre_idGenre"),
+    FOREIGN KEY ("Telecast_idTelecast")
+    REFERENCES "Telecast" ("idTelecast")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY ("Genre_idGenre")
+    REFERENCES "Genre" ("idGenre")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+
+CREATE TABLE "Company_has_Telecast" (
+  "Company_idCompany" INT NOT NULL,
+  "Telecast_idTelecast" INT NOT NULL,
+  PRIMARY KEY ("Company_idCompany", "Telecast_idTelecast"),
+    FOREIGN KEY ("Company_idCompany")
+    REFERENCES "Company" ("idCompany")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    FOREIGN KEY ("Telecast_idTelecast")
+    REFERENCES "Telecast" ("idTelecast")
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
