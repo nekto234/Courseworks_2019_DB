@@ -1,12 +1,9 @@
 use folizyuk;
 
--- працівники, яким більше 60-ти років
-SELECT 
-    name, birthday, phone
-FROM
-    workers
+-- канали, які маю в описі слово популярний
+SELECT * FROM Chanel
 WHERE
-    birthday > NOW() - INTERVAL 60 YEAR;
+    Description LIKE '%попул_рний%';
     
     
 -- де працюють/працювали працівники
@@ -45,8 +42,8 @@ FROM
 GROUP BY genre.name;
 
 
--- компанії, які існують більше 60-ти років
+-- компанії, які існують більше 70-ти років
 select * from company
-where creating_date> now()-interval 70 year
+where creating_date < now()-interval 70 year
 
 
